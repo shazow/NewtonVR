@@ -69,7 +69,7 @@ public class SteamVR_Camera : MonoBehaviour
 			_sceneTexture = new RenderTexture(w, h, 0, format);
 			_sceneTexture.antiAliasing = aa;
 
-#if (UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+#if (UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
 			// OpenVR assumes floating point render targets are linear unless otherwise specified.
 			var colorSpace = (hdr && QualitySettings.activeColorSpace == ColorSpace.Gamma) ? EColorSpace.Gamma : EColorSpace.Auto;
 			SteamVR.Unity.SetColorSpace(colorSpace);
@@ -90,7 +90,7 @@ public class SteamVR_Camera : MonoBehaviour
 
 	void OnEnable()
 	{
-#if !(UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+#if !(UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
 		// Convert camera rig for native OpenVR integration.
 		var t = transform;
 		if (head != t)
@@ -207,7 +207,7 @@ public class SteamVR_Camera : MonoBehaviour
 
 			components = GetComponents<Component>();
 
-#if !(UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+#if !(UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
 			if (this != components[components.Length - 1])
 			{
 #else
@@ -363,7 +363,7 @@ public class SteamVR_Camera : MonoBehaviour
 
 	#endregion
 
-#if (UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+#if (UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
 
 	#region Render callbacks
 

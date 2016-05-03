@@ -153,7 +153,7 @@ public class SteamVR_Render : MonoBehaviour
 
 				compositor.SetTrackingSpace(trackingSpace);
 
-#if (UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+#if (UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
 				SteamVR_Utils.QueueEventOnRenderThread(SteamVR.Unity.k_nRenderEventID_WaitGetPoses);
 
 				// Hack to flush render event that was queued in Update (this ensures WaitGetPoses has returned before we grab the new values).
@@ -173,7 +173,7 @@ public class SteamVR_Render : MonoBehaviour
 
 			RenderExternalCamera();
 
-#if (UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+#if (UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
 			var vr = SteamVR.instance;
 			RenderEye(vr, EVREye.Eye_Left);
 			RenderEye(vr, EVREye.Eye_Right);
@@ -322,19 +322,19 @@ public class SteamVR_Render : MonoBehaviour
 
 	void FixedUpdate()
 	{
-#if (UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+#if (UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
 		// We want to call this as soon after Present as possible.
 		SteamVR_Utils.QueueEventOnRenderThread(SteamVR.Unity.k_nRenderEventID_PostPresentHandoff);
 #endif
 	}
 
-#if !(UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+#if !(UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
 	private SteamVR_UpdatePoses poseUpdater;
 #endif
 
 	void Update()
 	{
-#if !(UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
+#if !(UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
 		if (poseUpdater == null)
 		{
 			var go = new GameObject("poseUpdater");
